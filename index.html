@@ -29,8 +29,9 @@
       <a href="#funkce">Funkce</a>
       <a href="#kontroly">Kontroly</a>
       <a href="#kompletka">Kompletka</a>
+      <a href="#novinky">Novinky</a>
       <a href="#faq">Dotazy</a>
-      <a href="#stazeni" class="dl">Stáhnout</a>
+      <a href="stahnout/Ondrovo-DTMko-Setup.exe" class="dl" download>Stáhnout</a>
     </nav>
     <button class="bar-btn theme" id="theme" type="button" aria-label="Přepnout světlý a tmavý vzhled" title="Světlý / tmavý vzhled">Vzhled ◐</button>
     <button class="bar-btn menu-btn" id="menu-btn" type="button" aria-label="Nabídka" aria-expanded="false" aria-controls="nav">☰</button>
@@ -248,34 +249,8 @@
   </div>
 </section>
 
-<!-- ================= STAŽENÍ ================= -->
-<section id="stazeni">
-  <div class="wrap download">
-    <div class="dl-card">
-      <span class="kicker">Stažení</span>
-      <div class="ver"><strong>Ondrovo DTMko</strong></div>
-      <p style="color:var(--muted);margin:0">Instalační program <code>Ondrovo-DTMko-Setup.exe</code> (asi 12 MB) nainstaluje vždy nejnovější verzi. Nepotřebuje práva správce, vytvoří zástupce v nabídce Start a program jde odinstalovat v Nastavení → Aplikace.</p>
-      <div class="cta">
-        <a class="btn primary" href="stahnout/Ondrovo-DTMko-Setup.exe" download>⬇ Stáhnout instalační program</a>
-      </div>
-      <div class="callout"><b>Windows může instalátor zablokovat.</b> Soubor zatím není digitálně podepsaný, proto se při spuštění objeví SmartScreen („Neznámý vydavatel“). Zvolte <i>Další informace → Přesto spustit</i>. Stažený soubor případně odblokujte ve Vlastnostech.</div>
-    </div>
-    <div>
-      <h3 style="margin:8px 0 8px">Požadavky</h3>
-      <div class="tv reqs">
-        <div class="th"><span>Položka</span><span>Požadavek</span></div>
-        <div class="tr"><span>Systém</span><span>Windows 10 nebo 11, 64 bit</span></div>
-        <div class="tr"><span>Internet</span><span>při instalaci a pro podklady z DMVS, mapy, ARES, Portál a aktualizace. Kreslení, kontroly a export fungují i bez něj.</span></div>
-        <div class="tr"><span>Grafika</span><span>OpenGL 3.3 pro nejrychlejší plánek, jinak se kreslí pomaleji dlaždicemi</span></div>
-        <div class="tr"><span>Edge WebView2</span><span>pro Portál DMVS v programu, je součástí Windows 11 a Windows 10 s Edge</span></div>
-        <div class="tr"><span>Certifikát</span><span>PFX od ČÚZK, jen pro stahování podkladů z DMVS</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= NOVINKY (skryté; zobrazí se odebráním atributu hidden a doplněním odkazu do nabídky) ================= -->
-<section id="novinky" class="alt" hidden>
+<!-- ================= NOVINKY ================= -->
+<section id="novinky">
   <div class="wrap">
     <div class="sec-head">
       <span class="kicker">Novinky</span>
@@ -283,6 +258,18 @@
       <p>Program se aktualizuje sám.</p>
     </div>
     <div class="news">
+      <article>
+        <time datetime="2026-11-17">17. 11. 2026</time>
+        <div>
+          <h3>2.5.2</h3>
+          <ul>
+            <li>Panel Vlastnosti je vidět vždy, od spuštění programu.</li>
+            <li>Okno aktualizace a ostatní dialogy se při spuštění ukážou uprostřed obrazovky.</li>
+            <li>Po stažení aktualizace už nebliká okno příkazového řádku.</li>
+          </ul>
+        </div>
+      </article>
+
       <article>
         <time datetime="2026-11-17">17. 11. 2026</time>
         <div>
@@ -362,7 +349,7 @@
       Program pro změny ZPS v DTM · © 2026 · <a href="https://dtmko.cz">dtmko.cz</a>
     </div>
     <div class="links">
-      <a href="#stazeni">Stažení</a>
+      <a href="stahnout/Ondrovo-DTMko-Setup.exe" download>Stáhnout</a>
       <a href="mailto:info@dtmko.cz">info@dtmko.cz</a>
     </div>
   </div>

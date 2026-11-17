@@ -5,7 +5,7 @@ Statický web (HTML, CSS, trochu JavaScriptu), bez knihoven, bez sledování a b
 ## Soubory
 | Soubor | Obsah |
 |---|---|
-| `index.html` | celá stránka (Postup, Funkce, Kontroly, Kompletka, Stažení, Novinky, Dotazy) |
+| `index.html` | celá stránka (Postup, Funkce, Kontroly, Kompletka, Novinky, Dotazy) |
 | `style.css` | vzhled podle vzhledu programu, světlý i tmavý režim |
 | `script.js` | přepínač vzhledu a nabídka na telefonu |
 | `assets\logo.png`, `favicon.ico` | logo programu |
@@ -37,7 +37,7 @@ Aktuální adresy vždy ověřit v dokumentaci GitHub Pages (Managing a custom d
 
 ## Nové vydání programu
 - Nahradit `stahnout\Ondrovo-DTMko-Setup.exe`, jen když se změnil instalační program.
-- Číslo verze a datum na stránce nejsou (stahuje se jen instalační program); skrytá sekce Novinky v `index.html` je ruční, odkaz do nabídky chybí.
+- Při novém vydání programu doplnit novou položku do sekce Novinky v `index.html` (nahoře, nejnovější první). Sekce Stažení na stránce není, tlačítka Stáhnout vedou přímo na instalátor.
 - Commit a push do `main`, stránka se přenasadí sama.
 
 ## Poznámky
