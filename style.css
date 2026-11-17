@@ -167,6 +167,9 @@ nav.main a.dl:hover { background: var(--accent-dark); color: #fff; }
 .eyebrow i { width: 8px; height: 8px; background: var(--new); display: inline-block; }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .lead { font-size: 1.1rem; color: var(--muted); max-width: 42ch; }
+.lead-free { color: var(--text); font-size: 1.2rem; margin-bottom: .6em; }
+.lead-free b { color: var(--accent-dark); }
+.lead-sub { font-size: 1rem; }
 .cta { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 12px; }
 .hero .note { font-size: 13px; color: var(--muted); }
 
