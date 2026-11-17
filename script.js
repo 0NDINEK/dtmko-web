@@ -46,7 +46,7 @@
       stav.className = "ask-status";
       stav.textContent = "Odesílám…";
       tlacitko.disabled = true;
-      fetch("https://formsubmit.co/ajax/info@dtmko.cz", {
+      fetch("https://formsubmit.co/ajax/fdb6ac00a01b7220bcc143b189ed0f6a", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify(data)
