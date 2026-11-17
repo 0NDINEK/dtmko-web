@@ -325,6 +325,10 @@
         <p>Kreslení, kontroly a všechny exporty ano. Internet potřebují jen podklady z DMVS, podkladové mapy, doplnění údajů z ARES, Portál DMVS a aktualizace.</p>
       </details>
       <details>
+        <summary>Windows hlásí „Neznámý vydavatel“ nebo instalátor zablokoval. Co s tím?</summary>
+        <p>Instalační program zatím není digitálně podepsaný (podepsání certifikátem je placené), proto ho Windows SmartScreen při prvním spuštění označí jako neznámý. V okně klikněte na <i>Další informace</i> a potom na <i>Přesto spustit</i>. Pokud se soubor vůbec nespustí, otevřete jeho <i>Vlastnosti</i>, na kartě <i>Obecné</i> zaškrtněte <i>Odblokovat</i> a potvrďte. Antivirový program může u nepodepsaného souboru hlásit upozornění, instalátor je ale stejný soubor, který si stahujete z této stránky.</p>
+      </details>
+      <details>
         <summary>Potřebuji na technickou zprávu Word?</summary>
         <p>Ne. Word i PDF se vytvářejí přímo v programu.</p>
       </details>
@@ -336,6 +340,26 @@
         <summary>Kam program ukládá nastavení?</summary>
         <p>Do složky, kam je program nainstalovaný. Výchozí je složka vašeho uživatelského účtu, takže práva správce nejsou potřeba. Při odinstalaci se nastavení smaže jen na vaše přání.</p>
       </details>
+    </div>
+    <div class="ask" id="dotaz">
+      <h3>Nenašli jste odpověď?</h3>
+      <p>Napište nám, odpovíme na e-mail, který uvedete.</p>
+      <form id="ask-form" action="https://formsubmit.co/info@dtmko.cz" method="POST">
+        <div class="row2">
+          <label><span>Jméno <span class="opt">(nepovinné)</span></span><input type="text" name="jmeno" autocomplete="name" maxlength="100"></label>
+          <label>Váš e-mail<input type="email" name="email" autocomplete="email" required maxlength="150"></label>
+        </div>
+        <label>Dotaz<textarea name="dotaz" rows="5" required maxlength="3000"></textarea></label>
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_subject" value="Dotaz z webu dtmko.cz">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="ask-bar">
+          <button class="btn primary" type="submit">Odeslat dotaz</button>
+          <span class="ask-note">Zpráva se odešle přes službu FormSubmit na info@dtmko.cz. Případně napište přímo na <a href="mailto:info@dtmko.cz">info@dtmko.cz</a>.</span>
+        </div>
+        <p class="ask-status" id="ask-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </div>
 </section>

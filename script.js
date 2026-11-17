@@ -33,4 +33,37 @@
       }
     });
   }
+
+  // Formulář s dotazem: odeslání přes službu FormSubmit na info@dtmko.cz (bez vlastního serveru).
+  var formular = document.getElementById("ask-form");
+  var stav = document.getElementById("ask-status");
+  if (formular && stav && window.fetch) {
+    formular.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var tlacitko = formular.querySelector('button[type="submit"]');
+      var data = {};
+      new FormData(formular).forEach(function (hodnota, klic) { data[klic] = hodnota; });
+      stav.className = "ask-status";
+      stav.textContent = "Odesílám…";
+      tlacitko.disabled = true;
+      fetch("https://formsubmit.co/ajax/info@dtmko.cz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data)
+      }).then(function (odpoved) {
+        return odpoved.json().then(function (j) { return { ok: odpoved.ok, json: j }; });
+      }).then(function (v) {
+        if (v.ok && (v.json.success === true || v.json.success === "true")) {
+          formular.reset();
+          stav.className = "ask-status ok";
+          stav.textContent = "Děkujeme, dotaz je odeslaný. Odpovíme na váš e-mail.";
+        } else {
+          throw new Error("neodesláno");
+        }
+      }).catch(function () {
+        stav.className = "ask-status err";
+        stav.textContent = "Dotaz se nepodařilo odeslat. Napište nám prosím přímo na info@dtmko.cz.";
+      }).then(function () { tlacitko.disabled = false; });
+    });
+  }
 })();
