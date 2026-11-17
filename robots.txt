@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /stahnout/
+
+Sitemap: https://dtmko.cz/sitemap.xml
