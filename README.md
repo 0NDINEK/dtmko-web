@@ -38,6 +38,7 @@ Aktuální adresy vždy ověřit v dokumentaci GitHub Pages (Managing a custom d
 ## Nové vydání programu
 - Nahradit `stahnout\Ondrovo-DTMko-Setup.exe`, jen když se změnil instalační program.
 - Při novém vydání programu doplnit novou položku do sekce Novinky v `index.html` (nahoře, nejnovější první). Sekce Stažení na stránce není, tlačítka Stáhnout vedou přímo na instalátor.
+- Po každé úpravě `style.css` nebo `script.js` zvýšit číslo `?v=` u jejich odkazů v `index.html` (například `style.css?v=4`), jinak si prohlížeče mohou až 10 minut držet starý soubor a stránka se zobrazí rozbitě.
 - Commit a push do `main`, stránka se přenasadí sama.
 
 ## Poznámky
