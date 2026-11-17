@@ -302,11 +302,6 @@ details p { color: var(--muted); padding-bottom: 4px; font-size: 14.5px; }
 .ask h3 { position: absolute; top: -.75em; left: 10px; margin: 0; padding: 0 6px; background: var(--bg-2); color: var(--accent-dark); font-size: 14px; line-height: 1.5; }
 .ask > p { color: var(--text); font-size: 15px; margin-bottom: 12px; }
 
-/* O projektu */
-.about { max-width: 66ch; font-size: 16px; }
-.about p { margin-bottom: 1em; }
-.about .sign { margin-top: 1.4em; color: var(--accent-dark); font-weight: 600; }
-
 /* Patička = stavový řádek */
 footer { background: var(--status); border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; padding: 14px 0 18px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; align-items: center; }
