@@ -37,7 +37,7 @@ Aktuální adresy vždy ověřit v dokumentaci GitHub Pages (Managing a custom d
 
 ## Nové vydání programu
 - Nahradit `stahnout\Ondrovo-DTMko-Setup.exe`, jen když se změnil instalační program.
-- Upravit číslo verze a datum v `index.html` (úvod, část Stažení, Novinky).
+- Číslo verze a datum na stránce nejsou (stahuje se jen instalační program); skrytá sekce Novinky v `index.html` je ruční, odkaz do nabídky chybí.
 - Commit a push do `main`, stránka se přenasadí sama.
 
 ## Poznámky
