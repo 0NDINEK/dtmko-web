@@ -43,5 +43,5 @@ Aktuální adresy vždy ověřit v dokumentaci GitHub Pages (Managing a custom d
 
 ## Poznámky
 - Instalační program sám při instalaci stahuje program z GitHubu (`0NDINEK/DTMko`), takže repozitář s vydáním musí zůstat veřejný.
-- Kontakt na stránce je `info@dtmko.cz`, schránka musí existovat.
+- Kontakt na stránce je jen e-mail `info@dtmko.cz` (odkaz mailto), schránka musí existovat. Formulář s dotazem se zrušil.
 - Ukázka okna programu je ilustrace nakreslená v HTML.

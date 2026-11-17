@@ -294,26 +294,10 @@ summary::after { content: "+"; width: 18px; height: 18px; border: 1px solid var(
 details[open] summary::after { content: "–"; border-color: var(--accent); }
 details p { color: var(--muted); padding-bottom: 4px; font-size: 14.5px; }
 
-/* Formulář s dotazem – rámeček oddílu (TLabelframe) a pole jako TEntry */
-.ask { position: relative; max-width: 820px; margin-top: 34px; background: var(--bg); border: 1px solid var(--line); padding: 22px 18px 16px; }
+/* Kontakt pod otázkami – rámeček oddílu (TLabelframe) */
+.ask { position: relative; max-width: 820px; margin-top: 34px; background: var(--bg); border: 1px solid var(--line); padding: 20px 18px 6px; }
 .ask h3 { position: absolute; top: -.75em; left: 10px; margin: 0; padding: 0 6px; background: var(--bg-2); color: var(--accent-dark); font-size: 14px; line-height: 1.5; }
-.ask > p { color: var(--muted); font-size: 14.5px; margin-bottom: 12px; }
-.ask form { display: grid; gap: 12px; }
-.ask .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.ask label { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
-.ask .opt { color: var(--muted-2); }
-.ask input[type="text"], .ask input[type="email"], .ask textarea {
-  font: inherit; font-size: 14.5px; color: var(--text); background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 6px 8px; width: 100%;
-}
-.ask textarea { resize: vertical; min-height: 110px; }
-.ask input:focus, .ask textarea:focus { border-color: var(--accent); outline: 1px solid var(--accent); outline-offset: 0; }
-.ask .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-.ask-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.ask-note { font-size: 12.5px; color: var(--muted); flex: 1; min-width: 220px; }
-.ask-status { margin: 0; font-size: 14px; min-height: 1.4em; }
-.ask-status.ok { color: var(--ok); font-weight: 600; }
-.ask-status.err { color: var(--err); font-weight: 600; }
-.btn[disabled] { opacity: .6; cursor: progress; }
+.ask > p { color: var(--text); font-size: 15px; margin-bottom: 12px; }
 
 /* Patička = stavový řádek */
 footer { background: var(--status); border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; padding: 14px 0 18px; }
@@ -347,7 +331,6 @@ footer .links a + a { border-left: 1px solid var(--line); margin-left: 14px; pad
   .reqs .tr { grid-template-columns: 1fr; gap: 0; }
   .reqs .tr > * + * { padding-left: 0; }
   .reqs .th { display: none; }
-  .ask .row2 { grid-template-columns: 1fr; }
   .app-body { grid-template-columns: 1fr; }
   .app-canvas { border-right: 0; border-bottom: 1px solid var(--line); }
   footer .links a + a { margin-left: 12px; padding-left: 12px; }
