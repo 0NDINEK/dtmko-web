@@ -34,36 +34,74 @@
     });
   }
 
-  // Formulář s dotazem: odeslání přes službu FormSubmit na info@dtmko.cz (bez vlastního serveru).
+  // Formulář s dotazem: odeslání přes službu FormSubmit (bez vlastního serveru).
+  // Služba odpovídá pomalu (i přes minutu), proto se pole vyprázdní hned po odeslání a výsledek se doplní, až přijde.
   var formular = document.getElementById("ask-form");
   var stav = document.getElementById("ask-status");
   if (formular && stav && window.fetch) {
+    var cil = "https://formsubmit.co/ajax/fdb6ac00a01b7220bcc143b189ed0f6a";
+    var posledni = { klic: "", cas: 0 };
+
+    function ukaz(trida, text, odkaz) {
+      stav.className = "ask-status " + trida;
+      stav.textContent = text;
+      if (odkaz) {
+        var a = document.createElement("a");
+        a.href = odkaz.href;
+        a.textContent = odkaz.text;
+        stav.appendChild(document.createTextNode(" "));
+        stav.appendChild(a);
+      }
+    }
+
     formular.addEventListener("submit", function (e) {
       e.preventDefault();
       var tlacitko = formular.querySelector('button[type="submit"]');
+      if (tlacitko.disabled) { return; }
+
       var data = {};
       new FormData(formular).forEach(function (hodnota, klic) { data[klic] = hodnota; });
-      stav.className = "ask-status";
-      stav.textContent = "Odesílám…";
+
+      // stejný dotaz od stejného odesílatele do 10 minut neposílat podruhé
+      var klic = (data.email || "") + "|" + (data.dotaz || "");
+      if (klic === posledni.klic && Date.now() - posledni.cas < 600000) {
+        ukaz("ok", "Tento dotaz už jsme odeslali, děkujeme.");
+        return;
+      }
+      posledni = { klic: klic, cas: Date.now() };
+
+      // pole se vyprázdní hned, aby se dotaz nedal poslat opakovaně
+      formular.reset();
       tlacitko.disabled = true;
-      fetch("https://formsubmit.co/ajax/fdb6ac00a01b7220bcc143b189ed0f6a", {
+      ukaz("", "Odesíláme dotaz, může to trvat až minutu. Stránku prosím nezavírejte.");
+
+      var radic = window.AbortController ? new AbortController() : null;
+      var casovac = radic ? setTimeout(function () { radic.abort(); }, 120000) : null;
+
+      fetch(cil, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        signal: radic ? radic.signal : undefined
       }).then(function (odpoved) {
         return odpoved.json().then(function (j) { return { ok: odpoved.ok, json: j }; });
       }).then(function (v) {
         if (v.ok && (v.json.success === true || v.json.success === "true")) {
-          formular.reset();
-          stav.className = "ask-status ok";
-          stav.textContent = "Děkujeme, dotaz je odeslaný. Odpovíme na váš e-mail.";
+          ukaz("ok", "Děkujeme, dotaz je odeslaný. Odpovíme na váš e-mail.");
         } else {
           throw new Error("neodesláno");
         }
       }).catch(function () {
-        stav.className = "ask-status err";
-        stav.textContent = "Dotaz se nepodařilo odeslat. Napište nám prosím přímo na info@dtmko.cz.";
-      }).then(function () { tlacitko.disabled = false; });
+        // odpověď se nepodařilo ověřit; zpráva mohla odejít, proto neutrální text a záložní e-mail s vyplněným dotazem
+        var telo = "Od: " + (data.jmeno || "") + " <" + (data.email || "") + ">\n\n" + (data.dotaz || "");
+        var href = "mailto:info@dtmko.cz?subject=" + encodeURIComponent("Dotaz z webu dtmko.cz") +
+          "&body=" + encodeURIComponent(telo.slice(0, 1500));
+        ukaz("err", "Nepodařilo se potvrdit, že dotaz odešel. Pokud se vám do několika dnů neozveme, pošlete ho prosím e-mailem.",
+          { href: href, text: "Otevřít e-mail s vaším dotazem" });
+      }).then(function () {
+        if (casovac) { clearTimeout(casovac); }
+        tlacitko.disabled = false;
+      });
     });
   }
 })();
