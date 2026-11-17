@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ondrovo DTMko – změny ZPS od zaměření po kompletku pro DMVS</title>
+<meta name="description" content="Ondrovo DTMko je program pro geodety: nakreslí změny ZPS, zkontroluje je podle IS DMVS a připraví změnový JVF DTM 1.5, seznam souřadnic, technickou zprávu a kontrolní kresbu.">
+<meta name="theme-color" content="#1673d1">
+<link rel="icon" href="favicon.ico">
+<meta property="og:title" content="Ondrovo DTMko">
+<meta property="og:description" content="Změny ZPS od zaměření po kompletku pro DMVS. Program pro geodety, Windows.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dtmko.cz/">
+<meta property="og:image" content="https://dtmko.cz/assets/logo.png">
+<link rel="canonical" href="https://dtmko.cz/">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="DTMko – nahoru">
+      <img src="assets/logo.png" alt="" width="58" height="36">
+      <span><b>DTMko</b></span>
+    </a>
+    <nav class="main" id="nav" aria-label="Hlavní nabídka">
+      <a href="#postup">Postup</a>
+      <a href="#funkce">Funkce</a>
+      <a href="#kontroly">Kontroly</a>
+      <a href="#kompletka">Kompletka</a>
+      <a href="#novinky">Novinky</a>
+      <a href="#faq">Dotazy</a>
+      <a href="#stazeni" class="dl">Stáhnout</a>
+    </nav>
+    <button class="bar-btn theme" id="theme" type="button" aria-label="Přepnout světlý a tmavý vzhled" title="Světlý / tmavý vzhled">Vzhled ◐</button>
+    <button class="bar-btn menu-btn" id="menu-btn" type="button" aria-label="Nabídka" aria-expanded="false" aria-controls="nav">☰</button>
+  </div>
+</header>
+
+<main id="obsah">
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><i></i> Verze 2.5.1 · JVF DTM 1.5.0.2 · Windows</span>
+      <h1>Od naměřených bodů ke <em>kompletce pro DMVS</em></h1>
+      <p class="lead">Program pro geodety. Nakreslí změny základní prostorové situace, zkontroluje je podle kontrol IS DMVS a připraví změnový JVF i všechny přílohy.</p>
+      <div class="cta">
+        <a class="btn primary" href="stahnout/Ondrovo-DTMko-Setup.exe" download>
+          ⬇ Stáhnout pro Windows <small>· instalátor</small>
+        </a>
+        <a class="btn ghost" href="#postup">Jak to funguje</a>
+      </div>
+      <p class="note">Instalace bez práv správce. Windows 10 a 11, 64 bit.</p>
+    </div>
+
+    <figure style="margin:0">
+      <div class="app" role="img" aria-label="Ilustrace okna programu: plánek s novými, upravenými a smazanými objekty, vpravo vlastnosti vybraného objektu, dole výsledek kontrol">
+        <div class="app-title"><img src="assets/logo.png" alt="" width="26" height="16"> Ondrovo DTMko – zakázka 00424 <span class="wc"><i>—</i><i>☐</i><i>✕</i></span></div>
+        <div class="app-menu"><span>Zakázka</span><span>Kreslení</span><span>Editace</span><span>Manipulace</span><span>Výstupy</span><span>Nastavení</span><span>Nápověda</span></div>
+        <div class="app-tabs"><span class="on">ZPS</span><span>Portál DMVS</span></div>
+        <div class="app-body">
+          <div class="app-canvas">
+            <svg viewBox="0 0 560 330" aria-hidden="true">
+              <!-- referenční data -->
+              <path class="m-ref" d="M0 250 C120 232 200 262 300 240 S480 205 560 214"/>
+              <path class="m-ref" d="M0 276 C120 258 200 288 300 266 S480 231 560 240"/>
+              <path class="m-ref" d="M40 0 L58 330"/>
+              <path class="m-ref" d="M470 0 L486 205"/>
+              <rect class="m-bld" x="82" y="44" width="92" height="64" />
+              <rect class="m-bld" x="82" y="130" width="62" height="58" />
+              <rect class="m-bld" x="330" y="30" width="88" height="70"/>
+              <rect class="m-bld" x="500" y="40" width="46" height="90"/>
+              <rect class="m-bld" x="352" y="122" width="60" height="50"/>
+              <path class="m-ref" d="M200 20 L318 20 L318 150 L200 150 Z"/>
+              <!-- nové -->
+              <path class="m-new" d="M208 176 L300 168 L388 190 L470 184"/>
+              <g class="m-pt"><circle cx="208" cy="176" r="3.6"/><circle cx="300" cy="168" r="3.6"/><circle cx="388" cy="190" r="3.6"/><circle cx="470" cy="184" r="3.6"/></g>
+              <!-- upravené -->
+              <path class="m-edit" d="M92 214 L150 206 L204 176"/>
+              <g class="m-pt"><circle cx="92" cy="214" r="3.6"/><circle cx="150" cy="206" r="3.6"/></g>
+              <!-- smazané -->
+              <path class="m-del" d="M236 60 L292 112"/>
+              <!-- vybraná nová budova -->
+              <path class="m-sel" d="M214 52 L300 52 L300 124 L214 124 Z"/>
+              <g class="m-pt"><circle cx="214" cy="52" r="3.6"/><circle cx="300" cy="52" r="3.6"/><circle cx="300" cy="124" r="3.6"/><circle cx="214" cy="124" r="3.6"/></g>
+              <text class="m-txt" x="306" y="48">12.84</text>
+              <text class="m-txt" x="394" y="206">214.37</text>
+            </svg>
+            <div class="legend" aria-hidden="true">
+              <span><b style="background:var(--new)"></b>nový</span>
+              <span><b style="background:var(--edit)"></b>upravený</span>
+              <span><b style="background:var(--del)"></b>smazaný</span>
+            </div>
+          </div>
+          <aside class="app-side">
+            <h4>Vlastnosti</h4>
+            <dl>
+              <dt>Třída</dt><dd>Budova</dd>
+              <dt>Stav</dt><dd style="color:var(--new)">nový</dd>
+              <dt>Úroveň</dt><dd>1</dd>
+              <dt>Pořízení</dt><dd>měření</dd>
+              <dt>Vrcholů</dt><dd>4</dd>
+            </dl>
+          </aside>
+        </div>
+        <div class="app-checks" aria-hidden="true">
+          <div><span class="c-err">●</span><b>3.3</b> Linie končí uprostřed úseku jiné linie</div>
+          <div><span class="c-warn">▲</span><b>3.7</b> Volné konce sousedních hranic</div>
+          <div><span class="c-ok">✓</span><b>1.2</b> Oblast změny je v pořádku</div>
+        </div>
+        <div class="app-status" aria-hidden="true"><span>Nových 3</span><span>Upravených 1</span><span>Smazaných 1</span><span>Vybráno 1</span></div>
+      </div>
+      <figcaption class="app-caption">Ilustrace okna programu</figcaption>
+    </figure>
+  </div>
+</div>
+
+<!-- ================= POSTUP ================= -->
+<section id="postup">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Postup</span>
+      <h2>Celá zakázka v jednom okně</h2>
+      <p>Žádné přepínání mezi kreslicím programem, kontrolami a tabulkami. Program vede zakázku od prvního bodu po poslední přílohu.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Zakázka a podklady</h3><p>Založíte zakázku s hlavičkou, načtete referenční JVF nebo si stáhnete data z DMVS podle výřezu mapy.</p></li>
+      <li><h3>Body</h3><p>Seznam souřadnic se rozřadí podle kódů na podrobné, identické a výškové body.</p></li>
+      <li><h3>Kreslení</h3><p>Objekty ZPS kreslíte ve 2D i 3D s přichytáváním a katalogem všech typů objektů.</p></li>
+      <li><h3>Kontroly</h3><p>Před odesláním se data zkontrolují podle kódů kontrol IS DMVS. Co je špatně, vidíte hned v plánku.</p></li>
+      <li><h3>Kompletka</h3><p>Jedno tlačítko vytvoří změnový JVF, seznam souřadnic, ověření homogenity, technickou zprávu i kresbu.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= FUNKCE ================= -->
+<section id="funkce" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Funkce</span>
+      <h2>Všechno, co geodet při změnách ZPS potřebuje</h2>
+    </div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/></svg></div>
+        <h3>Kreslení podle mapového klíče</h3>
+        <p>Čáry a značky se kreslí podle mapového klíče DTM ČR 1.5.0.1: čárkování, zeď, zábradlí, svodidlo, bodové symboly i značky ploch.</p>
+      </div>
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div>
+        <h3>2D i 3D plánek</h3>
+        <p>Plánek se kreslí na grafické kartě, takže zvládne desítky tisíc prvků. Jedním tlačítkem přepnete na 3D pohled.</p>
+      </div>
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+        <h3>Kontroly před odesláním</h3>
+        <p>Stejné kódy a stejný přístup jako v protokolu IS DMVS. Výběr nálezu rovnou přiblíží plánek na dotčené objekty.</p>
+      </div>
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v3h16v-3"/></svg></div>
+        <h3>Podklady z DMVS a z map</h3>
+        <p>Veřejnou datovou sadu ZPS stáhnete podle výřezu. Pod plánek lze zapnout ortofoto, katastrální mapu i přesnost hranic parcel.</p>
+      </div>
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg></div>
+        <h3>Technická zpráva</h3>
+        <p>Vzor se doplní údaji z hlavičky zakázky. Zprávu dostanete jako Word nebo rovnou jako PDF, Word v počítači není potřeba.</p>
+      </div>
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 15h18M13 15v5M7 9l3 3 4-5"/></svg></div>
+        <h3>Kontrolní kresba PDF/A</h3>
+        <p>Měřický náčrt ve formátu PDF/A-2b s popisovým polem, v měřítku a na listu podle volby, s barvami podle mapového klíče.</p>
+      </div>
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4-8 4z"/><path d="M4 12l8 4 8-4M4 17l8 4 8-4"/></svg></div>
+        <h3>Export do DXF a DGN</h3>
+        <p>Výkres do DXF (R12) nebo do DGN V7 pro MicroStation: hladina na třídu objektu, čísla a výšky bodů, barvy podle stavu.</p>
+      </div>
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div>
+        <h3>Portál DMVS v programu</h3>
+        <p>Portál DMVS, Slovník DTM, DTM Wiki a Katalog požadavků DTM se otevřou ve vlastní záložce. Nemusíte přepínat do prohlížeče.</p>
+      </div>
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div>
+        <h3>Rychlé úpravy</h3>
+        <p>Tabulka souřadnic s přepisem hodnot, hromadné vyplnění atributů, úprava hodnot ve Vlastnostech a Zpět u každé změny.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= KONTROLY ================= -->
+<section id="kontroly">
+  <div class="wrap split">
+    <div>
+      <span class="kicker">Kontroly</span>
+      <h2>Chyby najdete dřív než IS DMVS</h2>
+      <p>Odmítnutý soubor znamená opravu a další odeslání. DTMko proto prověří data předem, podle kontrol IS DMVS a DTM Wiki.</p>
+      <ul class="ticks">
+        <li>Kolize, duplicity a napojení linií, volné konce hranic</li>
+        <li>Plochy odvozené z linií: malé plochy, chybějící nebo dva definiční body</li>
+        <li>3D obvod plochy a svislé úseky, třídy přesnosti, výšky</li>
+        <li>Kontrola i hotového JVF souboru a validace proti schématům XSD</li>
+        <li>Chyby jsou červené, varování oranžová, kliknutím se vyberou na plánku</li>
+      </ul>
+    </div>
+    <div class="tv report" role="img" aria-label="Ukázka okna s výsledkem kontrol">
+      <div class="tv-title"><span>Kontrola před odesláním</span><span>ukázka</span></div>
+      <div class="th"><span></span><span>Kód</span><span>Nález</span></div>
+      <div class="tr err"><span class="c-err">●</span><b>3.3</b><span class="t">Linie končí uprostřed úseku jiné linie. Druhou linii rozdělte.</span></div>
+      <div class="tr err"><span class="c-err">●</span><b>4.3</b><span class="t">Plocha nemá definiční bod.</span></div>
+      <div class="tr err"><span class="c-err">●</span><b>4.8</b><span class="t">Ve styku linií se liší výška obvodu plochy.</span></div>
+      <div class="tr warn"><span class="c-warn">▲</span><b>3.7</b><span class="t">Volný konec hranice.</span></div>
+      <div class="tr warn"><span class="c-warn">▲</span><b>2.3</b><span class="t">Třída přesnosti ve výšce není vyplněná.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KOMPLETKA ================= -->
+<section id="kompletka" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Kompletka</span>
+      <h2>Jedno tlačítko, všechny přílohy</h2>
+      <p>Všechny výstupy zakázky skončí najednou v jedné složce a mají správné názvy souborů.</p>
+    </div>
+    <div class="tv files">
+      <div class="th"><span>Typ</span><span>Výstup</span><span>Obsah</span></div>
+      <div class="tr"><span class="ext">JVF</span><span>Změnový JVF</span><span>Nové, upravené a smazané objekty, JVF DTM 1.5.0.2</span></div>
+      <div class="tr"><span class="ext">SS</span><span>Seznam souřadnic</span><span>Souřadnice nových bodů v textovém souboru</span></div>
+      <div class="tr"><span class="ext">IB</span><span>Ověření homogenity</span><span>Ověření identických bodů v textovém souboru</span></div>
+      <div class="tr"><span class="ext">TZ</span><span>Technická zpráva</span><span>Word nebo PDF, doplněná z hlavičky</span></div>
+      <div class="tr"><span class="ext">MN</span><span>Kontrolní kresba</span><span>Měřický náčrt, PDF/A</span></div>
+    </div>
+    <div class="fname" aria-label="Příklad názvu souboru">SUBJ-<b>00000000</b>_<b>CZ020</b>_<b>00001</b>_<b>JVF</b>.jvf.xml &nbsp;·&nbsp; ID subjektu, kraj z RÚIAN, číslo zakázky, typ přílohy</div>
+  </div>
+</section>
+
+<!-- ================= STAŽENÍ ================= -->
+<section id="stazeni">
+  <div class="wrap download">
+    <div class="dl-card">
+      <span class="kicker">Stažení</span>
+      <div class="ver"><strong>Ondrovo DTMko 2.5.1</strong><span>vydáno 17. 11. 2026</span></div>
+      <p style="color:var(--muted);margin:0">Instalační program <code>Ondrovo-DTMko-Setup.exe</code> (asi 12 MB) nainstaluje vždy nejnovější verzi. Nepotřebuje práva správce, vytvoří zástupce v nabídce Start a program jde odinstalovat v Nastavení → Aplikace.</p>
+      <div class="cta">
+        <a class="btn primary" href="stahnout/Ondrovo-DTMko-Setup.exe" download>⬇ Stáhnout instalační program</a>
+      </div>
+      <div class="callout"><b>Windows může instalátor zablokovat.</b> Soubor zatím není digitálně podepsaný, proto se při spuštění objeví SmartScreen („Neznámý vydavatel“). Zvolte <i>Další informace → Přesto spustit</i>. Stažený soubor případně odblokujte ve Vlastnostech.</div>
+    </div>
+    <div>
+      <h3 style="margin:8px 0 8px">Požadavky</h3>
+      <div class="tv reqs">
+        <div class="th"><span>Položka</span><span>Požadavek</span></div>
+        <div class="tr"><span>Systém</span><span>Windows 10 nebo 11, 64 bit</span></div>
+        <div class="tr"><span>Internet</span><span>při instalaci a pro podklady z DMVS, mapy, ARES, Portál a aktualizace. Kreslení, kontroly a export fungují i bez něj.</span></div>
+        <div class="tr"><span>Grafika</span><span>OpenGL 3.3 pro nejrychlejší plánek, jinak se kreslí pomaleji dlaždicemi</span></div>
+        <div class="tr"><span>Edge WebView2</span><span>pro Portál DMVS v programu, je součástí Windows 11 a Windows 10 s Edge</span></div>
+        <div class="tr"><span>Certifikát</span><span>PFX od ČÚZK, jen pro stahování podkladů z DMVS</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NOVINKY ================= -->
+<section id="novinky" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Novinky</span>
+      <h2>Co je nového</h2>
+      <p>Program se aktualizuje sám.</p>
+    </div>
+    <div class="news">
+      <article>
+        <time datetime="2026-11-17">17. 11. 2026</time>
+        <div>
+          <h3>2.5.1</h3>
+          <ul>
+            <li>Hodnotu atributu změníte ve Vlastnostech kliknutím, u číselníků z nabídky.</li>
+            <li>Plynulé přepnutí světlého a tmavého vzhledu a stálé barvy objektů v plánku i ve 3D.</li>
+            <li>Kontroly hlásí i stav, který po smazání nebo posunu zůstal (definiční body, volné konce).</li>
+          </ul>
+        </div>
+      </article>
+      <article>
+        <time datetime="2026-11-16">16. 11. 2026</time>
+        <div>
+          <h3>2.5.0</h3>
+          <ul>
+            <li>Nové okno Nastavení prostředí, pozadí plánku nezávislé na vzhledu programu.</li>
+            <li>Export do DGN V7 pro MicroStation.</li>
+          </ul>
+        </div>
+      </article>
+      <article>
+        <time datetime="2026-11-16">16. 11. 2026</time>
+        <div>
+          <h3>2.4.2</h3>
+          <ul>
+            <li>Nové kontroly 4.8 (3D obvod plochy) a 3.3 (napojení linií).</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Dotazy</span>
+      <h2>Časté otázky</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Odesílá program data rovnou do IS DMVS?</summary>
+        <p>Ne. Změnový JVF si uložíte a nahrajete ho v Portálu DMVS, který je ve vlastní záložce přímo v programu. Co a kdy odešlete, rozhodujete vy.</p>
+      </details>
+      <details>
+        <summary>Jaká verze JVF DTM se zapisuje?</summary>
+        <p>JVF DTM 1.5.0.2. Starší soubory ve verzi 1.4.3 program umí načíst, ale nezapisuje je.</p>
+      </details>
+      <details>
+        <summary>Funguje program bez internetu?</summary>
+        <p>Kreslení, kontroly a všechny exporty ano. Internet potřebují jen podklady z DMVS, podkladové mapy, doplnění údajů z ARES, Portál DMVS a aktualizace.</p>
+      </details>
+      <details>
+        <summary>Potřebuji na technickou zprávu Word?</summary>
+        <p>Ne. Word i PDF se vytvářejí přímo v programu.</p>
+      </details>
+      <details>
+        <summary>Jak se program aktualizuje?</summary>
+        <p>Sám. Při spuštění zkontroluje nejnovější vydání a nabídne aktualizaci s ukazatelem průběhu.</p>
+      </details>
+      <details>
+        <summary>Kam program ukládá nastavení?</summary>
+        <p>Do složky, kam je program nainstalovaný. Výchozí je složka vašeho uživatelského účtu, takže práva správce nejsou potřeba. Při odinstalaci se nastavení smaže jen na vaše přání.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong style="color:var(--text)">Ondrovo DTMko</strong><br>
+      Program pro změny ZPS v DTM · © 2026 · <a href="https://dtmko.cz">dtmko.cz</a>
+    </div>
+    <div class="links">
+      <a href="#stazeni">Stažení</a>
+      <a href="mailto:info@dtmko.cz">info@dtmko.cz</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+/* DTMko.cz – styl webu podle vzhledu programu (tkinter / ttk, téma clam, v1.0).
+   Pravidla převzatá z programu: ploché prvky bez zaoblení a stínů, vlasová linka v barvě „ramecek“, rámečky oddílů s titulkem akcentem,
+   pruh nabídek z plochých tlačítek, tabulky jako seznamy (záhlaví šedě, řádek 24 px), záložky, stavový řádek, tenké posuvníky bez šipek,
+   po najetí podbarvení „vyber“. Barvy jsou přesně z palet „světlý“ a „tmavý“ (vzhled.py). */
+
+:root {
+  --bg: #f6f7f9;          /* pozadi */
+  --bg-2: #eceef2;        /* plocha */
+  --card: #ffffff;        /* pole (vstupy, tabulky) */
+  --text: #1b1f24;
+  --muted: #5b6471;       /* slaby */
+  --muted-2: #949cab;     /* slaby2 */
+  --line: #d8dde4;        /* ramecek */
+  --accent: #1673d1;      /* akcent */
+  --accent-dark: #0a4e8c; /* akcent_tmavy */
+  --accent-soft: #e8f1fd; /* vyber */
+  --sel-row: #eef5fd;     /* vybrany_bod */
+  --on-accent: #ffffff;
+  --btn: #ffffff;         /* tlacitko */
+  --btn-down: #e7eaef;    /* tlacitko_pod */
+  --status: #f0f2f5;      /* stav */
+  --scroll: #c6ccd5;      /* posuvnik */
+  --trough: #eef0f3;      /* drazka */
+  --new: #1fa84f;
+  --edit: #f08c00;
+  --del: #e5383b;
+  --err: #c00000;
+  --warn: #d9730d;
+  --ok: #16804a;
+  --canvas: #ffffff;
+  --canvas-line: #1b1f24;
+  --font: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace;
+  --r: 2px;               /* tkinter nemá zaoblení, jen minimální vyhlazení */
+  --hero-glow: rgba(22, 115, 209, .12);
+}
+
+:root[data-theme="dark"] {
+  --bg: #1f2329;
+  --bg-2: #16191d;
+  --card: #262b32;
+  --text: #e6e9ed;
+  --muted: #a3acb8;
+  --muted-2: #7d8793;
+  --line: #3a424c;
+  --accent: #4ea3e8;
+  --accent-dark: #7cc0f0;
+  --accent-soft: #1d3a55;
+  --sel-row: #1b3147;
+  --on-accent: #0b1a2a;
+  --btn: #2d333b;
+  --btn-down: #363d45;
+  --status: #272c32;
+  --scroll: #454e58;
+  --trough: #22262b;
+  --err: #ff7b72;
+  --warn: #ffa657;
+  --ok: #7ee787;
+  --canvas: #14171b;
+  --canvas-line: #e6e9ed;
+  --hero-glow: rgba(78, 163, 232, .16);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1f2329;
+    --bg-2: #16191d;
+    --card: #262b32;
+    --text: #e6e9ed;
+    --muted: #a3acb8;
+    --muted-2: #7d8793;
+    --line: #3a424c;
+    --accent: #4ea3e8;
+    --accent-dark: #7cc0f0;
+    --accent-soft: #1d3a55;
+    --sel-row: #1b3147;
+    --on-accent: #0b1a2a;
+    --btn: #2d333b;
+    --btn-down: #363d45;
+    --status: #272c32;
+    --scroll: #454e58;
+    --trough: #22262b;
+    --err: #ff7b72;
+    --warn: #ffa657;
+    --ok: #7ee787;
+    --canvas: #14171b;
+    --canvas-line: #e6e9ed;
+    --hero-glow: rgba(78, 163, 232, .16);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 52px; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: auto;
+}
+img, svg { max-width: 100%; display: block; }
+a { color: var(--accent-dark); text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .5em; }
+h1 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 700; letter-spacing: -.015em; }
+h2 { font-size: clamp(1.4rem, 2.6vw, 1.8rem); font-weight: 600; }
+h3 { font-size: 1rem; font-weight: 700; }
+p { margin: 0 0 1em; }
+code, kbd { font-family: var(--mono); font-size: .88em; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: .05em .35em; }
+
+/* tenké posuvníky bez šipek jako v programu */
+html { scrollbar-width: thin; scrollbar-color: var(--scroll) var(--trough); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--trough); }
+::-webkit-scrollbar-thumb { background: var(--scroll); }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+.wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: var(--on-accent); padding: 8px 14px; z-index: 100; }
+.skip:focus { left: 8px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* ---------- Pruh nabídek (záhlaví) ---------- */
+.top { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 4px; min-height: 44px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--accent-dark); font-weight: 700; font-size: 1.05rem; margin-right: 14px; }
+.brand img { height: 28px; width: auto; }
+.brand b { font-weight: 700; }
+nav.main { display: flex; align-items: center; gap: 0; }
+nav.main a, .bar-btn {
+  color: var(--text); text-decoration: none; font: inherit; font-size: 14px; background: transparent; border: 0; border-radius: 0;
+  padding: 7px 14px; cursor: pointer; line-height: 1.4;
+}
+nav.main a:hover, .bar-btn:hover { background: var(--accent-soft); color: var(--accent-dark); }
+nav.main a.dl { margin-left: 4px; background: var(--accent); color: var(--on-accent); font-weight: 600; }
+nav.main a.dl:hover { background: var(--accent-dark); color: #fff; }
+:root[data-theme="dark"] nav.main a.dl:hover { background: #6ab4ee; color: var(--on-accent); }
+.top .theme { margin-left: auto; }
+.menu-btn { display: none; }
+
+/* ---------- Tlačítka (TButton) ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font: inherit; font-size: 14px;
+  padding: 8px 18px; border: 1px solid var(--line); border-radius: var(--r); background: var(--btn); color: var(--text); cursor: pointer;
+}
+.btn:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-dark); }
+.btn:active { background: var(--btn-down); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
+.btn.primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; }
+:root[data-theme="dark"] .btn.primary:hover { background: #6ab4ee; border-color: #6ab4ee; color: var(--on-accent); }
+.btn small { font-weight: 400; opacity: .85; }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: clamp(32px, 5vw, 60px) 0 clamp(36px, 5vw, 56px);
+  background:
+    radial-gradient(900px 420px at 80% 0%, var(--hero-glow), transparent 70%),
+    linear-gradient(color-mix(in srgb, var(--line) 75%, transparent) 1px, transparent 1px) 0 0 / 100% 48px,
+    linear-gradient(90deg, color-mix(in srgb, var(--line) 75%, transparent) 1px, transparent 1px) 0 0 / 48px 100%;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 44px; align-items: center; }
+.eyebrow { display: inline-flex; gap: 8px; align-items: center; font-size: 12px; color: var(--muted); border: 1px solid var(--line); background: var(--status); padding: 3px 10px; margin-bottom: 16px; }
+.eyebrow i { width: 8px; height: 8px; background: var(--new); display: inline-block; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.lead { font-size: 1.1rem; color: var(--muted); max-width: 42ch; }
+.cta { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 12px; }
+.hero .note { font-size: 13px; color: var(--muted); }
+
+/* ---------- Ukázka okna programu ---------- */
+.app { background: var(--bg); border: 1px solid var(--line); box-shadow: 0 0 0 1px rgba(0,0,0,.02); font-size: 12px; line-height: 1.35; }
+.app-title { display: flex; align-items: center; gap: 8px; padding: 0 0 0 8px; height: 30px; background: var(--bg-2); border-bottom: 1px solid var(--line); color: var(--text); }
+.app-title img { height: 16px; width: auto; }
+.app-title .wc { margin-left: auto; display: flex; height: 100%; color: var(--muted); font-size: 11px; }
+.app-title .wc i { font-style: normal; width: 40px; display: grid; place-items: center; }
+.app-title .wc i:last-child:hover { background: #c42b1c; color: #fff; }
+.app-menu { display: flex; border-bottom: 1px solid var(--line); background: var(--bg); color: var(--text); flex-wrap: wrap; }
+.app-menu span { padding: 5px 12px; }
+.app-tabs { display: flex; gap: 2px; padding: 4px 6px 0; background: var(--bg); border-bottom: 1px solid var(--line); }
+.app-tabs span { padding: 4px 14px; background: var(--bg-2); color: var(--muted); border: 1px solid var(--line); border-bottom: 0; margin-bottom: -1px; }
+.app-tabs span.on { background: var(--bg); color: var(--accent-dark); position: relative; }
+.app-body { display: grid; grid-template-columns: 1fr 150px; }
+.app-canvas { background: var(--canvas); border-right: 1px solid var(--line); position: relative; }
+.app-canvas svg { width: 100%; height: auto; }
+.legend { position: absolute; left: 8px; bottom: 8px; display: flex; gap: 10px; background: var(--bg); border: 1px solid var(--line); padding: 2px 8px; color: var(--muted); font-size: 11px; }
+.legend b { display: inline-block; width: 14px; height: 3px; vertical-align: middle; margin-right: 4px; }
+.app-side { padding: 8px 10px; background: var(--bg); }
+.app-side h4 { margin: 0 0 6px; font-size: 12px; color: var(--accent-dark); }
+.app-side dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0 8px; background: var(--card); border: 1px solid var(--line); }
+.app-side dt, .app-side dd { padding: 2px 6px; border-bottom: 1px solid var(--line); }
+.app-side dt:last-of-type, .app-side dd:last-of-type { border-bottom: 0; }
+.app-side dt { color: var(--muted); }
+.app-side dd { margin: 0; text-align: right; font-weight: 600; }
+.app-checks { border-top: 1px solid var(--line); background: var(--card); }
+.app-checks div { display: flex; gap: 8px; padding: 3px 10px; border-bottom: 1px solid var(--line); align-items: baseline; }
+.app-checks b { font-family: var(--mono); font-weight: 600; min-width: 26px; }
+.app-status { display: flex; gap: 14px; padding: 3px 10px; background: var(--status); border-top: 1px solid var(--line); color: var(--muted); flex-wrap: wrap; }
+.app-status span + span { border-left: 1px solid var(--line); padding-left: 14px; }
+.c-err { color: var(--err); font-weight: 700; }
+.c-warn { color: var(--warn); font-weight: 700; }
+.c-ok { color: var(--ok); font-weight: 700; }
+.m-ref { fill: none; stroke: var(--canvas-line); stroke-opacity: .38; stroke-width: 1.4; }
+.m-bld { fill: var(--canvas-line); fill-opacity: .06; stroke: var(--canvas-line); stroke-opacity: .38; stroke-width: 1.2; }
+.m-new, .m-edit, .m-del, .m-sel { fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.m-new { stroke: var(--new); }
+.m-edit { stroke: var(--edit); }
+.m-del { stroke: var(--del); stroke-dasharray: 6 5; }
+.m-sel { stroke: #2a8cff; stroke-width: 2.8; }
+.m-pt { fill: var(--canvas); stroke: var(--canvas-line); stroke-width: 1.5; }
+.m-txt { fill: var(--canvas-line); fill-opacity: .7; font: 10px var(--font); }
+.app-caption { text-align: center; font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+/* ---------- Sekce ---------- */
+section { padding: clamp(36px, 5vw, 64px) 0; }
+section.alt { background: var(--bg-2); border-block: 1px solid var(--line); }
+.sec-head { max-width: 64ch; margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.sec-head p { color: var(--muted); margin: 0; }
+.sec-head h2 { margin-bottom: .3em; }
+.kicker { font-size: 12px; font-weight: 700; color: var(--accent-dark); margin-bottom: 4px; display: block; }
+
+/* Postup – číslované kroky jako řádek rámečků */
+.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; counter-reset: s; }
+.steps li { background: var(--bg); border: 1px solid var(--line); padding: 14px 14px 12px; counter-increment: s; }
+.steps li::before { content: counter(s); display: inline-grid; place-items: center; min-width: 24px; height: 24px; background: var(--accent); color: var(--on-accent); font-weight: 700; font-size: 13px; margin-bottom: 10px; }
+.steps h3 { margin-bottom: .25em; color: var(--accent-dark); }
+.steps p { font-size: 14px; color: var(--muted); margin: 0; }
+
+/* Funkce – rámečky oddílů (TLabelframe): vlasová linka a titulek akcentem na hraně */
+.grid { display: grid; gap: 22px 12px; grid-template-columns: repeat(3, 1fr); }
+.card { position: relative; background: var(--bg); border: 1px solid var(--line); padding: 20px 14px 14px; margin-top: 8px; }
+.card h3 { position: absolute; top: -.75em; left: 10px; margin: 0; padding: 0 6px; background: var(--bg); color: var(--accent-dark); font-size: 14px; line-height: 1.5; }
+.card .ico { color: var(--accent); margin: 0 0 8px; display: block; }
+.card .ico svg { width: 22px; height: 22px; }
+.card p { color: var(--text); font-size: 14px; margin: 0; }
+
+/* Kontroly + Kompletka + Požadavky – tabulky jako Treeview (záhlaví šedě, řádek ~26 px) */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
+.ticks { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 8px; }
+.ticks li { padding-left: 24px; position: relative; font-size: 14.5px; }
+.ticks li::before { content: ""; position: absolute; left: 2px; top: .3em; width: 14px; height: 14px; background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-6.5' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center / 12px no-repeat; }
+.tv { background: var(--card); border: 1px solid var(--line); font-size: 14px; }
+.tv .th, .tv .tr { display: grid; align-items: center; padding: 0 8px; min-height: 26px; }
+.tv .th { background: var(--bg); color: var(--muted); border-bottom: 1px solid var(--line); min-height: 28px; }
+.tv .th span + span, .tv .tr > * + * { padding-left: 8px; }
+.tv .th span + span { border-left: 1px solid var(--line); }
+.tv .tr { border-bottom: 1px solid color-mix(in srgb, var(--line) 55%, transparent); padding-top: 3px; padding-bottom: 3px; }
+.tv .tr:last-child { border-bottom: 0; }
+.tv .tr:hover { background: var(--sel-row); }
+.tv .tr b { font-family: var(--mono); font-weight: 600; }
+.tv-title { padding: 5px 8px; background: var(--bg-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; }
+.report .th, .report .tr { grid-template-columns: 22px 44px 1fr; }
+.report .tr.err .t { color: var(--err); font-weight: 600; }
+.report .tr.warn .t { color: var(--warn); font-weight: 600; }
+.files .th, .files .tr { grid-template-columns: 70px 190px 1fr; }
+.files .ext { font-family: var(--mono); font-weight: 700; color: var(--accent-dark); }
+.fname { margin-top: 14px; padding: 8px 12px; border: 1px solid var(--line); background: var(--status); font-family: var(--mono); font-size: 12.5px; overflow-x: auto; white-space: nowrap; color: var(--muted); }
+.fname b { color: var(--accent-dark); }
+
+/* Stažení – rámeček s titulkem */
+.download { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: start; }
+.dl-card { position: relative; background: var(--bg); border: 1px solid var(--line); padding: 22px 18px 18px; margin-top: 8px; }
+.dl-card .kicker { position: absolute; top: -.8em; left: 10px; margin: 0; padding: 0 6px; background: var(--bg); font-size: 14px; }
+.dl-card .ver { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+.dl-card .ver strong { font-size: 1.3rem; }
+.dl-card .ver span { color: var(--muted); font-size: 13px; }
+.dl-card .cta { margin: 16px 0 14px; }
+.reqs .tr { grid-template-columns: 110px 1fr; align-items: start; }
+.reqs .tr > :first-child { font-weight: 600; }
+.reqs .tr span { color: var(--muted); }
+.callout { padding: 10px 14px; background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--edit); font-size: 13.5px; }
+
+/* Novinky */
+.news { display: grid; gap: 8px; }
+.news article { background: var(--card); border: 1px solid var(--line); padding: 12px 16px; display: grid; grid-template-columns: 110px 1fr; gap: 16px; }
+.news time { color: var(--muted); font-size: 13px; }
+.news h3 { margin-bottom: .2em; color: var(--accent-dark); }
+.news ul { margin: 0; padding-left: 1.1em; color: var(--text); font-size: 14px; }
+.news li { margin-bottom: 3px; }
+
+/* FAQ */
+.faq { display: grid; gap: 6px; max-width: 820px; }
+details { background: var(--card); border: 1px solid var(--line); padding: 0 14px; }
+details[open] { border-color: var(--accent); }
+summary { cursor: pointer; font-weight: 600; padding: 9px 0; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+summary:hover { color: var(--accent-dark); }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; width: 18px; height: 18px; border: 1px solid var(--line); background: var(--btn); display: grid; place-items: center; font-weight: 400; line-height: 1; flex: none; }
+details[open] summary::after { content: "–"; border-color: var(--accent); }
+details p { color: var(--muted); padding-bottom: 4px; font-size: 14.5px; }
+
+/* Patička = stavový řádek */
+footer { background: var(--status); border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; padding: 14px 0 18px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; align-items: center; }
+footer strong { color: var(--text); }
+footer a { color: var(--muted); text-decoration: none; padding: 2px 0; }
+footer a:hover { color: var(--accent); text-decoration: underline; }
+footer .links { display: flex; gap: 0; flex-wrap: wrap; }
+footer .links a + a { border-left: 1px solid var(--line); margin-left: 14px; padding-left: 14px; }
+
+/* ---------- Responzivita ---------- */
+@media (max-width: 980px) {
+  .hero-grid, .split, .download { grid-template-columns: 1fr; gap: 32px; }
+  .steps { grid-template-columns: repeat(3, 1fr); }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  body { font-size: 15px; }
+  .menu-btn { display: block; margin-left: auto; }
+  .top .theme { margin-left: 0; }
+  nav.main { display: none; position: absolute; left: 0; right: 0; top: 44px; flex-direction: column; align-items: stretch; background: var(--bg); border-bottom: 1px solid var(--line); padding: 4px 0 8px; }
+  nav.main.open { display: flex; }
+  nav.main a { padding: 11px 16px; }
+  nav.main a.dl { margin: 6px 16px 0; text-align: center; }
+  .steps, .grid { grid-template-columns: 1fr; }
+  .steps li { padding: 12px; }
+  .files .th, .files .tr { grid-template-columns: 52px 1fr; }
+  .files .th span:last-child { display: none; }
+  .files .tr > :last-child { grid-column: 2; color: var(--muted); font-size: 13px; padding-left: 8px; }
+  .news article { grid-template-columns: 1fr; gap: 4px; }
+  .reqs .tr { grid-template-columns: 1fr; gap: 0; }
+  .reqs .tr > * + * { padding-left: 0; }
+  .reqs .th { display: none; }
+  .app-body { grid-template-columns: 1fr; }
+  .app-canvas { border-right: 0; border-bottom: 1px solid var(--line); }
+  footer .links a + a { margin-left: 12px; padding-left: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media print { .top, .cta, .menu-btn { display: none; } }
