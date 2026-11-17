@@ -269,7 +269,8 @@ section.alt { background: var(--bg-2); border-block: 1px solid var(--line); }
 .dl-card .ver strong { font-size: 1.3rem; }
 .dl-card .ver span { color: var(--muted); font-size: 13px; }
 .dl-card .cta { margin: 16px 0 14px; }
-.reqs .tr { grid-template-columns: 110px 1fr; align-items: start; }
+.reqs .th, .reqs .tr { grid-template-columns: 110px 1fr; }
+.reqs .tr { align-items: start; }
 .reqs .tr > :first-child { font-weight: 600; }
 .reqs .tr span { color: var(--muted); }
 .callout { padding: 10px 14px; background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--edit); font-size: 13.5px; }
